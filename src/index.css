@@ -2,41 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Sistema de Secretaria Vida e Futuro - Design System
+Cores baseadas na identidade visual do projeto social
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Background System */
+    --background: 210 20% 98%;
+    --foreground: 207 68% 20%;
 
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 207 68% 20%;
 
+    /* Popover System */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 207 68% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Azul Institucional (#05486b) */
+    --primary: 207 68% 22%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 207 68% 35%;
+    --primary-glow: 207 68% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Laranja Vibrante (#f49b2c) */
+    --secondary: 33 89% 56%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 33 89% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent Colors */
+    --accent-pink: 341 81% 53%; /* #df3369 */
+    --accent-teal: 186 100% 34%; /* #009aaf */
+    --accent-gray: 240 4% 52%; /* #7f8084 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted System */
+    --muted: 210 20% 96%;
+    --muted-foreground: 240 4% 52%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Accent System */
+    --accent: 210 20% 96%;
+    --accent-foreground: 207 68% 20%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Status Colors */
+    --destructive: 341 81% 53%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 140 60% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 33 89% 56%;
+    --warning-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    /* Border & Input */
+    --border: 214 31% 91%;
+    --input: 214 31% 91%;
+    --ring: 207 68% 22%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent-teal)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
+
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(var(--primary) / 0.1);
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.3);
+
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
