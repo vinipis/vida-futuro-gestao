@@ -139,7 +139,10 @@ export default function Turmas() {
             Controle de turmas e classes do projeto
           </p>
         </div>
-        <Button className="bg-accent-teal hover:shadow-glow transition-all duration-300 text-white">
+        <Button 
+          className="bg-accent-teal hover:shadow-glow transition-all duration-300 text-white"
+          onClick={() => alert('Funcionalidade de criar nova turma será implementada')}
+        >
           <Plus className="w-4 h-4 mr-2" />
           Nova Turma
         </Button>
@@ -158,7 +161,11 @@ export default function Turmas() {
                 className="pl-10"
               />
             </div>
-            <Button variant="outline" className="hover:bg-accent/50">
+            <Button 
+              variant="outline" 
+              className="hover:bg-accent/50"
+              onClick={() => alert('Aplicando filtros avançados')}
+            >
               <Filter className="w-4 h-4 mr-2" />
               Filtros
             </Button>
@@ -243,13 +250,28 @@ export default function Turmas() {
                   </div>
                   
                   <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="hover:bg-accent/50">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="hover:bg-accent/50"
+                      onClick={() => alert(`Editando turma ${turma.nome}`)}
+                    >
                       <Edit className="w-4 h-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="hover:bg-destructive/10 hover:text-destructive">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="hover:bg-destructive/10 hover:text-destructive"
+                      onClick={() => alert(`Excluindo turma ${turma.nome}`)}
+                    >
                       <Trash2 className="w-4 h-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="hover:bg-accent/50">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="hover:bg-accent/50"
+                      onClick={() => alert(`Mais opções para ${turma.nome}`)}
+                    >
                       <MoreHorizontal className="w-4 h-4" />
                     </Button>
                   </div>

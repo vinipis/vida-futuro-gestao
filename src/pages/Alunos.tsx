@@ -80,7 +80,10 @@ export default function Alunos() {
             Cadastro e controle de estudantes
           </p>
         </div>
-        <Button className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
+        <Button 
+          className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+          onClick={() => alert('Funcionalidade de cadastro de aluno será implementada')}
+        >
           <Plus className="w-4 h-4 mr-2" />
           Novo Aluno
         </Button>
@@ -99,7 +102,11 @@ export default function Alunos() {
                 className="pl-10"
               />
             </div>
-            <Button variant="outline" className="hover:bg-accent/50">
+            <Button 
+              variant="outline" 
+              className="hover:bg-accent/50"
+              onClick={() => alert('Aplicando filtros avançados')}
+            >
               <Filter className="w-4 h-4 mr-2" />
               Filtros
             </Button>
@@ -190,13 +197,28 @@ export default function Alunos() {
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="icon" className="hover:bg-accent/50">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="hover:bg-accent/50"
+                    onClick={() => alert(`Editando aluno ${aluno.nome}`)}
+                  >
                     <Edit className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="hover:bg-destructive/10 hover:text-destructive">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="hover:bg-destructive/10 hover:text-destructive"
+                    onClick={() => alert(`Excluindo aluno ${aluno.nome}`)}
+                  >
                     <Trash2 className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="hover:bg-accent/50">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="hover:bg-accent/50"
+                    onClick={() => alert(`Mais opções para ${aluno.nome}`)}
+                  >
                     <MoreHorizontal className="w-4 h-4" />
                   </Button>
                 </div>

@@ -88,7 +88,10 @@ export default function Dashboard() {
             Visão geral do sistema de secretaria
           </p>
         </div>
-        <Button className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
+        <Button 
+          className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+          onClick={() => window.location.href = '/relatorios'}
+        >
           <TrendingUp className="w-4 h-4 mr-2" />
           Gerar Relatório
         </Button>
@@ -124,6 +127,7 @@ export default function Dashboard() {
             <Button 
               variant="outline" 
               className="w-full justify-start hover:bg-primary/5 hover:border-primary"
+              onClick={() => window.location.href = '/alunos'}
             >
               <Users className="w-4 h-4 mr-2" />
               Cadastrar Novo Aluno
@@ -131,6 +135,7 @@ export default function Dashboard() {
             <Button 
               variant="outline" 
               className="w-full justify-start hover:bg-secondary/5 hover:border-secondary"
+              onClick={() => window.location.href = '/professores'}
             >
               <GraduationCap className="w-4 h-4 mr-2" />
               Registrar Professor
@@ -138,6 +143,7 @@ export default function Dashboard() {
             <Button 
               variant="outline" 
               className="w-full justify-start hover:bg-accent-teal/5 hover:border-accent-teal"
+              onClick={() => window.location.href = '/turmas'}
             >
               <BookOpen className="w-4 h-4 mr-2" />
               Criar Nova Turma
@@ -145,6 +151,7 @@ export default function Dashboard() {
             <Button 
               variant="outline" 
               className="w-full justify-start hover:bg-accent-pink/5 hover:border-accent-pink"
+              onClick={() => window.location.href = '/chamada'}
             >
               <Calendar className="w-4 h-4 mr-2" />
               Fazer Chamada

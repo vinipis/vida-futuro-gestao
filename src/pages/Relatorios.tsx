@@ -77,7 +77,10 @@ export default function Relatorios() {
             Análises e estatísticas do sistema
           </p>
         </div>
-        <Button className="bg-accent-pink hover:shadow-glow transition-all duration-300 text-white">
+        <Button 
+          className="bg-accent-pink hover:shadow-glow transition-all duration-300 text-white"
+          onClick={() => alert('Funcionalidade de exportação será implementada')}
+        >
           <Download className="w-4 h-4 mr-2" />
           Exportar Dados
         </Button>
@@ -122,7 +125,10 @@ export default function Relatorios() {
             </div>
 
             <div className="flex items-end">
-              <Button className="w-full bg-gradient-primary">
+              <Button 
+                className="w-full bg-gradient-primary"
+                onClick={() => alert(`Gerando relatório ${tipoRelatorio} para ${periodoSelecionado}`)}
+              >
                 <BarChart3 className="w-4 h-4 mr-2" />
                 Gerar Relatório
               </Button>
@@ -206,11 +212,19 @@ export default function Relatorios() {
                   </div>
                   
                   <div className="flex gap-2">
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => alert(`Visualizando ${relatorio.titulo}`)}
+                    >
                       <FileText className="w-4 h-4 mr-2" />
                       Visualizar
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => alert(`Baixando ${relatorio.titulo}`)}
+                    >
                       <Download className="w-4 h-4 mr-2" />
                       Baixar
                     </Button>

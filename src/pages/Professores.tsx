@@ -102,7 +102,10 @@ export default function Professores() {
             Cadastro e controle do corpo docente
           </p>
         </div>
-        <Button className="bg-gradient-secondary hover:shadow-glow transition-all duration-300">
+        <Button 
+          className="bg-gradient-secondary hover:shadow-glow transition-all duration-300"
+          onClick={() => alert('Funcionalidade de cadastro de professor será implementada')}
+        >
           <Plus className="w-4 h-4 mr-2" />
           Novo Professor
         </Button>
@@ -121,7 +124,11 @@ export default function Professores() {
                 className="pl-10"
               />
             </div>
-            <Button variant="outline" className="hover:bg-accent/50">
+            <Button 
+              variant="outline" 
+              className="hover:bg-accent/50"
+              onClick={() => alert('Aplicando filtros avançados')}
+            >
               <Filter className="w-4 h-4 mr-2" />
               Filtros
             </Button>
@@ -225,13 +232,28 @@ export default function Professores() {
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="icon" className="hover:bg-accent/50">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="hover:bg-accent/50"
+                    onClick={() => alert(`Editando professor ${professor.nome}`)}
+                  >
                     <Edit className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="hover:bg-destructive/10 hover:text-destructive">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="hover:bg-destructive/10 hover:text-destructive"
+                    onClick={() => alert(`Excluindo professor ${professor.nome}`)}
+                  >
                     <Trash2 className="w-4 h-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" className="hover:bg-accent/50">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="hover:bg-accent/50"
+                    onClick={() => alert(`Mais opções para ${professor.nome}`)}
+                  >
                     <MoreHorizontal className="w-4 h-4" />
                   </Button>
                 </div>
