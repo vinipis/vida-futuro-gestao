@@ -16,7 +16,7 @@ import {
 
 export default function Relatorios() {
   const [periodoSelecionado, setPeriodoSelecionado] = useState("2025-01");
-  const [tipoRelatorio, setTipoRelatorio] = useState("");
+  const [tipoRelatorio, setTipoRelatorio] = useState("todos");
 
   const relatoriosDisponiveis = [
     {
@@ -113,7 +113,7 @@ export default function Relatorios() {
                   <SelectValue placeholder="Todos os relatórios" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">Todos os relatórios</SelectItem>
+                  <SelectItem value="todos">Todos os relatórios</SelectItem>
                   <SelectItem value="presenca">Presença</SelectItem>
                   <SelectItem value="volume">Volume de Alunos</SelectItem>
                   <SelectItem value="finalizacao">Finalização vs Desistência</SelectItem>
