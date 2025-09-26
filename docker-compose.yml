@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
-      - /projetovidaefuturo/volumes/db:/var/lib/postgresql/data
+      - /vidafuturo/volumes/db:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 10s
@@ -36,7 +36,3 @@ services:
     depends_on:
       - api
     restart: unless-stopped
-
-# removemos o volume nomeado 'db_data' porque estamos usando bind
-# volumes:
-#   db_data:
