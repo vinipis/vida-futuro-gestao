@@ -2,8 +2,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
+import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Alunos from "./pages/Alunos";
 import Professores from "./pages/Professores"; 
@@ -22,18 +25,53 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout><Dashboard /></Layout>} />
-          <Route path="/alunos" element={<Layout><Alunos /></Layout>} />
-          <Route path="/professores" element={<Layout><Professores /></Layout>} />
-          <Route path="/turmas" element={<Layout><Turmas /></Layout>} />
-          <Route path="/chamada" element={<Layout><Chamada /></Layout>} />
-          <Route path="/calendario" element={<Layout><Calendario /></Layout>} />
-          <Route path="/relatorios" element={<Layout><Relatorios /></Layout>} />
-          <Route path="/configuracoes" element={<Layout><Configuracoes /></Layout>} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario', 'professor']}>
+                <Layout><Dashboard /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/alunos" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario', 'professor']}>
+                <Layout><Alunos /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/professores" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario']}>
+                <Layout><Professores /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/turmas" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario', 'professor']}>
+                <Layout><Turmas /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/chamada" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario', 'professor']}>
+                <Layout><Chamada /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/calendario" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario', 'professor']}>
+                <Layout><Calendario /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/relatorios" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario']}>
+                <Layout><Relatorios /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/configuracoes" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario']}>
+                <Layout><Configuracoes /></Layout>
+              </ProtectedRoute>
+            } />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

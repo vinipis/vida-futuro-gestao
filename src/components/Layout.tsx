@@ -2,12 +2,15 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
 import { Bell, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const { signOut } = useAuth();
+
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full bg-background">
@@ -31,7 +34,12 @@ export default function Layout({ children }: LayoutProps) {
               <Button variant="ghost" size="icon" className="text-accent-gray hover:text-primary">
                 <User className="w-5 h-5" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-accent-gray hover:text-destructive">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-accent-gray hover:text-destructive"
+                onClick={signOut}
+              >
                 <LogOut className="w-5 h-5" />
               </Button>
             </div>
