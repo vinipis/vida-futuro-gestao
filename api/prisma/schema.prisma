@@ -1,71 +1,79 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
 model Person {
-  id        String   @id @default(uuid())
-  fullName  String
-  email     String?  @unique
-  document  String?  @unique
-  phone     String?
-  createdAt DateTime @default(now())
+  id          String       @id @default(uuid())
+  fullName    String
+  email       String?      @unique
+  document    String?      @unique
+  phone       String?
+  createdAt   DateTime     @default(now())
   enrollments Enrollment[]
   Teacher     Teacher?
 }
 
 model Course {
-  id        String   @id @default(uuid())
-  name      String
-  modality  String
-  active    Boolean  @default(true)
-  createdAt DateTime @default(now())
+  id         String   @id @default(uuid())
+  name       String
+  modality   String
+  active     Boolean  @default(true)
+  createdAt  DateTime @default(now())
   classes    Class[]
 }
 
 model Class {
-  id         String   @id @default(uuid())
-  courseId   String
-  name       String
-  capacity   Int?
-  startDate  DateTime
-  endDate    DateTime
-  course     Course   @relation(fields: [courseId], references: [id])
+  id          String        @id @default(uuid())
+  courseId    String
+  name        String
+  capacity    Int?
+  startDate   DateTime
+  endDate     DateTime
+  course      Course        @relation(fields: [courseId], references: [id])
   enrollments Enrollment[]
   lessons     Lesson[]
   teachers    TeachingAssignment[]
 }
 
 model Enrollment {
-  id        String   @id @default(uuid())
-  classId   String
-  personId  String
-  status    String   @default("enrolled")
-  createdAt DateTime @default(now())
-  class     Class    @relation(fields: [classId], references: [id])
-  person    Person   @relation(fields: [personId], references: [id])
+  id         String     @id @default(uuid())
+  classId    String
+  personId   String
+  status     String     @default("enrolled")
+  createdAt  DateTime   @default(now())
+  class      Class      @relation(fields: [classId], references: [id])
+  person     Person     @relation(fields: [personId], references: [id])
   attendance Attendance[]
 }
 
 model Lesson {
-  id        String   @id @default(uuid())
-  classId   String
-  date      DateTime
-  title     String?
-  seq       Int?
-  status    String   @default("open")
-  isExtra   Boolean  @default(false)
-  class     Class    @relation(fields: [classId], references: [id])
+  id         String     @id @default(uuid())
+  classId    String
+  date       DateTime
+  title      String?
+  seq        Int?
+  status     String     @default("open")
+  isExtra    Boolean    @default(false)
+  class      Class      @relation(fields: [classId], references: [id])
   attendance Attendance[]
+
   @@unique([classId, date])
 }
 
 model Attendance {
-  id           String   @id @default(uuid())
+  id           String     @id @default(uuid())
   lessonId     String
   enrollmentId String
   present      Boolean?
   note         String?
   lesson       Lesson     @relation(fields: [lessonId], references: [id])
   enrollment   Enrollment @relation(fields: [enrollmentId], references: [id])
+
   @@unique([lessonId, enrollmentId])
 }
 
@@ -77,11 +85,12 @@ model Teacher {
 }
 
 model TeachingAssignment {
-  id        String @id @default(uuid())
+  id        String  @id @default(uuid())
   teacherId String
   classId   String
   role      String?
   teacher   Teacher @relation(fields: [teacherId], references: [id])
   class     Class   @relation(fields: [classId], references: [id])
+
   @@unique([teacherId, classId])
 }
