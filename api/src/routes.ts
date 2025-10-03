@@ -42,7 +42,7 @@ router.post("/courses", async (req, res) => {
 
 router.get("/courses", async (_req, res) => {
   try {
-    const courses = await prisma.course.findMany({ orderBy: { startDate: "desc" } });
+    const courses = await prisma.course.findMany({ orderBy: { createdAt: "desc" } });
     res.json(courses);
   } catch (e: any) {
     res.status(500).json({ error: e.message });
