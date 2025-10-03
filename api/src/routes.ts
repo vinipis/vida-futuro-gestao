@@ -73,7 +73,7 @@ router.get("/classes", async (req, res) => {
     const { courseId } = req.query as { courseId?: string };
     const classes = await prisma.class.findMany({
       where: courseId ? { courseId } : undefined,
-      orderBy: { startDate: "desc" },
+      orderBy: { createdAt: "desc" },
     });
     res.json(classes);
   } catch (e: any) {
