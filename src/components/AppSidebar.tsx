@@ -10,6 +10,7 @@ import {
   BarChart3,
   Settings,
   Menu,
+  UserPlus,
 } from "lucide-react";
 
 import {
@@ -24,6 +25,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useAuth } from "@/contexts/AuthContext";
 
 const mainItems = [
   { title: "Dashboard", url: "/", icon: Home },
@@ -39,11 +41,13 @@ const systemItems = [
 ];
 
 const configItems = [
+  { title: "Usuários", url: "/usuarios", icon: UserPlus, roles: ['admin', 'secretario'] },
   { title: "Configurações", url: "/configuracoes", icon: Settings },
 ];
 
 export function AppSidebar() {
   const { state } = useSidebar();
+  const { userRole } = useAuth();
   const location = useLocation();
   const currentPath = location.pathname;
   const collapsed = state === "collapsed";
@@ -123,16 +127,22 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {configItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <NavLink to={item.url} className={getNavClass(item.url)}>
-                      <item.icon className="w-5 h-5" />
-                      {!collapsed && <span>{item.title}</span>}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {configItems.map((item) => {
+                // Check if item has role restrictions
+                if ('roles' in item && item.roles && userRole && !item.roles.includes(userRole)) {
+                  return null;
+                }
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <NavLink to={item.url} className={getNavClass(item.url)}>
+                        <item.icon className="w-5 h-5" />
+                        {!collapsed && <span>{item.title}</span>}
+                      </NavLink>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

@@ -15,6 +15,7 @@ import Chamada from "./pages/Chamada";
 import Calendario from "./pages/Calendario";
 import Relatorios from "./pages/Relatorios";
 import Configuracoes from "./pages/Configuracoes";
+import Usuarios from "./pages/Usuarios";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -66,6 +67,11 @@ const App = () => (
             <Route path="/configuracoes" element={
               <ProtectedRoute allowedRoles={['admin', 'secretario']}>
                 <Layout><Configuracoes /></Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/usuarios" element={
+              <ProtectedRoute allowedRoles={['admin', 'secretario']}>
+                <Layout><Usuarios /></Layout>
               </ProtectedRoute>
             } />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
