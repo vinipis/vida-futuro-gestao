@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: api/Dockerfile
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      DATABASE_URL: ${DATABASE_URL}
       PORT: "8080"
       FRONTEND_ORIGIN: "${FRONTEND_ORIGIN}"
     depends_on:
